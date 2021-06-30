@@ -1,0 +1,148 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --back_color_feedback: rgb(221, 221, 221);
+  --color_feedback: black;
+  --back_color_select: rgb(150, 255, 150);
+  --color_select: black;
+  --back_color_feedback_text: rgb(194,240,238);
+  --color_feedback_text: rgb(15, 18, 44);
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --back_color_feedback: rgb(60, 60, 60);
+  --color_feedback: white;
+  --back_color_select: rgb(0, 44, 0);
+  --color_select: rgb(199, 199, 199);
+  --back_color_feedback_text: rgb(49, 51, 72);
+  --color_feedback_text: rgb(194,240,238);
+}
+/*новый отзыв левая часть*/
+.left{
+  width: 30%;
+  float: left;
+}
+/*новый отзыв правая часть*/
+.right{
+  width: 70%;
+  float: right;
+}
+/*выбор изображения*/
+.select_img{
+  width: 100%;
+  background-color: var(--back_color_select);
+  color: var(--color_select);
+}
+
+/*все отзывы*/
+.all_feedbacks {
+  padding: 38px 0;
+  color: var(--color_feedback);
+  text-align: center; 
+}
+.feedbacks_table {
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/*отдельный отзыв*/
+.feedback_container{
+  flex: 33.33%;
+  max-width: 33.33%;
+  box-sizing: border-box;
+  padding: 15px;
+}
+.feedback {
+  background: var(--back_color_feedback);
+  padding: 28px;
+}
+/*изображение*/
+.feedback img, .left img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 25%;
+}
+/*имя*/
+.feedback_name {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+/*текст*/
+.textarea_feedback{
+  width: 85%; 
+  height:150px; 
+  resize: none; 
+  background-color: var(--back_color_feedback_text);
+  color: var(--color_feedback_text);
+}
+/*звёздочки*/
+.feedback_stars {
+  color: #53b32b;
+  margin-bottom: 20px;
+}
+
+/*Ввод звезд*/
+/*поле для звезд*/
+.rating-area {
+	overflow: hidden;
+	width: 50%;
+	margin: 0 25%;
+}
+/*не отображаем radio в стандартном виде*/
+.rating-area:not(:checked) > input {
+	display: none;
+}
+/*отображаем звезду исходную*/
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 20%;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: rgb(190, 255, 172);
+	text-shadow: 1px 1px rgb(10, 48, 0);
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+/*выделенная звезда и предыдущие выделения*/
+.rating-area > input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+	position: relative;
+}
+
+
+@media screen and (max-width:960px) {
+  .feedback_container {
+    flex: 100%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .feedback_container {
+    flex: 100%;
+    max-width: 100%;
+  }
+}

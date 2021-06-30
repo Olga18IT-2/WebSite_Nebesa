@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+/*подключили шрифт*/
+
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --header_table: rgb(111, 111, 255);
+  --header_table_text: rgb(237, 237, 253);
+  --cell_table: rgb(169, 248, 158);
+  --cell_table_color: rgb(0, 0, 0);
+  --width_right: 35%;
+  --width_table: 90%;
+  --bc_sell: rgb(220, 220, 220);
+  --color_sell: black;
+  --color_last_sell: #9CD009;
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --header_table: rgb(1, 1, 80);
+  --header_table_text: rgb(221, 221, 221);
+  --cell_table: rgb(103, 103, 103);
+  --cell_table_color: rgb(225, 252, 227);
+  --width_right: 35%;
+  --width_table: 90%;
+  --bc_sell: rgb(115, 115, 115);
+  --color_sell: rgb(230, 230, 230);
+  --color_last_sell: #75902c;
+}
+*{
+  box-sizing: border-box;
+}
+/*блок информации*/
+.info{
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: calc(10% - 8px);
+}
+.inline div{
+  display: inline-block; /*блоки по горизонтали*/
+  display: -moz-inline-stack; /* Для FireFox 2 = inline-block */
+  vertical-align:center;
+  font-size:16px; 
+}
+/*подблок основного блока*/
+.block_1{
+  width: calc(90%/3 - 5px);
+  margin: 0 auto;
+  text-align: center;
+  border: 1px dotted black;
+  vertical-align: center;
+}
+.block_1 + .block_1{
+  margin-right: 10px;
+}
+.block_1 img{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 2%;
+}
+/* "внешняя обложка" */
+.outer{
+  position: relative;
+}
+.inner{
+  overflow-x: scroll;
+  overflow-y: visible;
+  width: calc(var(--width_table) - var(--width_right));
+  margin-left: calc(var(--width_right) + 10px);
+}
+/*основной стиль таблицы*/
+table.prices{
+  table-layout:auto;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal; /*начертание текста*/
+  border-collapse:separate;
+  width: var(--width_table);
+}
+/*элементы в заголовке*/
+.first_str th{
+  color:#fff;
+  text-shadow:1px 1px 1px #568F23;
+  border:1px solid #93CE37;
+  border-bottom:3px solid #9ED929;
+  background-color:#9DD929;
+  /*градиент*/
+  background:-webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0.02, rgb(123,192,67)),
+      color-stop(0.51, rgb(139,198,66)),
+      color-stop(0.87, rgb(158,217,41))
+      );
+  background: -moz-linear-gradient(
+      center bottom,
+      rgb(123,192,67) 2%,
+      rgb(139,198,66) 51%,
+      rgb(158,217,41) 87%
+      );
+  /*закругляем углы*/
+  -webkit-border-top-left-radius:5px;
+  -webkit-border-top-right-radius:5px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+}
+/*первый столбец*/
+th.str{
+  font-family: 'Sigmar One', cursive;
+  font-size: 17px;
+  background: url(/img/art_img_1.jpg);
+  color: transparent;
+  -webkit-background-clip: text; /*отображение фона*/
+  animation: animate_text 15s infinite linear;
+  position: relative;  
+}
+/*первая ячейка таблицы (пустая)*/
+.first_str th:empty{
+  background:transparent;
+  border:none;
+}
+/*любая ячейка таблицы*/
+td{
+	background-color: var(--bc_sell);
+  color: var(--color_sell);
+  font-size:18px;
+  padding:5px;
+}
+/*ячейки последней строки*/
+.last_str td{
+	background-color: transparent;
+  color: var(--color_last_sell);
+  font-size:30px;
+  padding:10px 10px;
+  text-shadow:1px 1px 1px #444;
+}
+.last_str th{
+  color:rgb(136, 107, 253);
+  padding: 10px 10px;
+  font-size: 26px;
+  margin-top: 10px;
+}
+
+.last_str th, th.str, .first_str th:empty{
+  position:absolute;
+  left: calc((100% - var(--width_table)) / 2 - 10px);
+  width: var(--width_right);
+}
+
+.div_oplata{
+  font-size: 19px;
+  color: var(--cell_table_color);
+  width: var(--width_table);
+  margin: 0 auto;
+  text-align: center;
+}
+.div_oplata p{
+  text-indent: 5%;
+  font-size: 18px;
+  line-height: 23px;
+  text-align: left;
+}
+
+.div_oplata img{
+  padding: 5px;
+  margin:0 auto;
+  transition: all 1s linear; 
+  width: 50%;
+}
+.div_oplata img:hover{
+  width: 90%;
+}
+
+
+/*блок информации*/
+.info_block_with_foto{
+  width: 99%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/*подблок основного блока*/
+.block_1_foto{
+  width: calc(99%/3 - 15px);
+  margin: 0 auto;
+  text-align: center;
+  border: 1px dotted black;
+  vertical-align: center;
+  margin-right: 5px;
+}
+
+.block_1_foto img{
+  margin: 0 auto;
+  padding: 5%;
+  width: 70%;
+  height: 100%;
+  transition: all 1s linear; 
+}
+.block_1_foto img:hover{
+  width: 100%;
+}
+.div_oplata a{
+  text-decoration: none;
+  color:rgb(135, 135, 211);
+  display: inline;
+}
+.div_oplata a:hover{
+  text-decoration: underline;
+  background-color: rgb(146, 196, 209);
+}
+h1, h2, h3, h4, h5, h6{
+  margin: 0 auto 0 auto;
+  padding: 0px;
+}
+
+@media (max-width: 1150px){
+  th.str{
+    font-size: 15px;
+  }
+}
+@media (max-width: 870){
+  th.str{
+    font-size: 14px;
+  }
+}
+@media (max-width: 600){
+  th.str{
+    font-size: 12px;
+  }
+}

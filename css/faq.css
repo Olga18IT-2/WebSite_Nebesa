@@ -1,0 +1,191 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --p_color: black;
+  --p_backcolor: lightgray;
+  --h6_color: rgb(2, 2, 105);
+  --ac_header_color: #567b8d;
+  --ac_header_color_select: rgb(124, 253, 120);
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --p_color: white;
+  --p_backcolor: rgb(90, 89, 89);
+  --h6_color: rgb(157, 157, 248);
+  --ac_header_color: #415158;
+  --ac_header_color_select: rgb(149, 149, 255);
+}
+body, html {
+  margin: 0px;
+  padding: 0px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800; /*насыщенность шрифта (от 100 до 900) 
+  (насколько жирный; по умолчанию = 400)*/
+}
+p {
+  color: var(--p_color);
+  font-size: 14px;
+}
+
+/*контейнер с интересной информацией*/
+.container_interesting_info{
+  position:absolute;
+  float: left;
+  margin-right: 1%;
+  width: 23%;
+  text-align: center;
+}
+/*кнопки с контейнере с интересной информацией*/
+.container_interesting_info .button{
+  text-decoration:none; 
+  text-align:center; 
+  width: 65%;
+  margin: 1% 25%;
+  border:solid 3px #004F72; 
+  border-radius: 10px; 
+  font:14px Verdana, Geneva, sans-serif; 
+  font-weight:bold; 
+  color:#1b0a80; 
+  background-color:#3e95b3; 
+}
+/*контейнер со всеми вопросами*/
+.container_question {
+  display: table;
+  float: right;
+  margin-right: 2%;
+  width: 75%;
+}
+
+/*колонка*/
+.column {
+  display: table-cell;
+  padding: 0px 10px;
+  width: 50%;
+}
+
+/*наименование категорий*/
+h2 {
+  color: #607D8B;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* "аккордион" */
+/* похож по смыслу на интерфейс с вкладками, на список пунктов, 
+   элементы списка ярлыков ссылаются на отдельные панели. */
+.accordion {
+  display: block;
+  font-size: inherit;
+  margin: 0px;
+  position: relative;
+}
+/*вводимое поле*/
+.accordion input {
+  display: none;
+  position: absolute;
+  visibility: hidden; /*скрываем*/
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+}
+/*заголовок аккордеона*/
+.accordion__header {
+  background-color: var(--ac_header_color);
+  border: 1px solid #CFD8DC;
+  border-bottom-width: 0px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.75s;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+/*заголовок аккордеона при наведении*/
+.accordion__header:hover {
+  background-color: var(--ac_header_color_select);
+  color: white;
+}
+.accordion__header:before, .accordion__header:after {
+  background-color: #CFD8DC; /*цвет +*/
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 3;
+}
+.accordion__header:before {
+  height: 2px;
+  margin-top: -1px;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+}
+.accordion__header:after {
+  height: 8px;
+  margin-top: -4px;
+  top: 50%;
+  right: 23px;
+  width: 2px;
+}
+/*заголовок аккордеона при выбранном текущем пункте*/
+.accordion input:checked ~ .accordion__header {
+  background: #607D8B;
+  border-color: #607D8B;
+  color: white;
+}
+.accordion input:checked ~ .accordion__header:hover {
+  background-color: var(--ac_header_color_select);
+  border-color: #607D8B;
+  color: white; 
+}
+.accordion input:checked ~ .accordion__header:after {
+  display: none; 
+}
+
+/*первый дочерний элемент родительского класса (accordion)*/
+.accordion:first-child .accordion__header {
+  /*закругляем верх*/
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+/*последний дочерний элемент родительского класса (accordion)*/
+.accordion:last-child .accordion__header {
+  border-bottom-width: 1px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+/*выбранный элемент*/
+.accordion:last-child input:checked ~ .accordion__header {
+  /*убираем нижние закругления*/
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/*содержание (основной текст (ответ))*/
+.accordion__content {
+  background-color: var(--p_backcolor);
+  border: 1px solid #607D8B;
+  border-width: 0px 1px;
+  display: none;
+  padding: 20px;
+}
+.accordion input:checked ~ .accordion__content {
+  display: block;
+}
+.accordion:last-child .accordion__content {
+  border-bottom-width: 1px;
+  border-radius: 0px 0px 4px 4px;
+}
+.accordion__content h6 {
+  color: var(--h6_color);
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width:870px) {
+  .container_question {
+    width: calc(100% - 200px);
+  }
+  .container_interesting_info{
+    width: 200px;
+  }
+}

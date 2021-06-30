@@ -1,0 +1,123 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --fon_text: #d1e8f8;
+  --text: rgb(3, 3, 29);
+  --fon_info_member: rgb(230, 229, 229);
+  --text_info_member: rgb(47, 47, 47);
+  --background_member: rgb(211, 210, 210);
+}
+
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --fon_text: #020c29;
+  --text: rgb(255, 255, 255);
+  --fon_info_member: rgb(162, 161, 161);;
+  --text_info_member: rgb(231, 229, 229);
+  --background_member:rgb(128, 128, 128);
+}
+*{
+  box-sizing: border-box;
+}
+.container_empl{ /*контейнеры (табличка)*/
+  margin:0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(2, auto-fit);
+}
+.image_member{
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+.image_member::before{
+  display: block;
+  background-color: var(--background_member);
+  content: "";
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+.image_member:after {
+  font-family: 'Lucida Console';
+  content: attr(alt);
+  display: block;
+  font-size: 19px;
+  position: absolute;
+  color: var(--text_info_member);
+  top: 50%;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+  -webkit-transform: scale(0) translateY(-50%);
+  transform: scale(0) translateY(-50%);
+  width: 100%;
+  margin: 0 auto;
+  z-index: 3;
+  }
+.image_member img {/*изображение*/
+  display: block;
+  margin:0 auto;
+  padding-top: 10px;
+  width: 80%; 
+  object-fit: cover;
+  z-index: 1;
+}
+.image_member::after{
+  -webkit-transition: all 350ms ease-in-out;
+  transition: all 350ms ease-in-out;
+}
+.image_member:hover::before{
+  opacity: 0.6;
+}
+.image_member:hover::after{
+  opacity: 1;
+  -webkit-transform: scale(1) translateY(-50%);
+  transform: scale(1) translateY(-50%);
+}
+.name_member{/*имя*/
+  font-size: 23px;
+  color: rgb(68, 14, 118);
+  text-align: center;
+}
+.empl_member{/*информация (должность)*/
+  margin: 0 auto;
+  width: 85%;
+  font-size: 20px;
+  background-color: var(--fon_info_member);
+  color: var(--text_info_member);
+  border-radius: 20px 20px 20px 20px;
+  min-height: 100px; 
+}
+.contact_member a{/*контактная информация (номер и почта)*/
+  color:rgb(68, 14, 118);
+  letter-spacing: 1px;
+  margin-top: 10px;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.contact_btn{/*контактные кнопки*/
+  border-radius: 20px 5px;
+  height: 4vh;
+  width: 5vh;
+  color:rgb(253, 253, 253);
+  background-color: rgb(35, 2, 76);
+  margin-top: 10px;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  padding: 1%;
+}
+.contact_i{/*иконка контактных кнопок*/
+ font-size: 25px;
+}
+.member {/*каждый сотрудник(профиль) в отдельности*/
+    margin-top: 3vh;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    border: 2px solid rgb(15, 15, 15);
+    text-align: center;
+    background-color:  var(--background_member);
+}

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+/*подключили шрифт*/
+
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --fon_text: #ffffff;
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --fon_text: #ebebeb;
+}
+
+/*секция*/
+.about {
+  margin-top: 125px;/* расстояние от одного блока до другого*/
+  padding: 300px 0 0 0;/*отступ от содержимого до края блока*/
+  /*вверх, право, низ, лево*/
+  background-image: url(/img/fon_dlina_1.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  opacity: 0.75;
+  overflow: hidden;/*то, что не помещается внутри блока - скрываем*/
+  position: relative;
+  text-align: center;
+  color: var(--fon_text);
+}
+/*текст (заголовок)*/
+.about-title {
+  font-family: 'Sigmar One', cursive;
+  font-size: 55px;
+  background: url(/img/art_img.jpg);
+  color: transparent;
+  -webkit-background-clip: text; /*отображение фона*/
+  animation: animate_text 15s infinite linear;
+  position: relative;
+}
+/*анимация для фона внутри текста (заливки текста)*/
+@keyframes animate_text{
+  from { background-position: 0 0; }
+  50%  { background-position: 50% 50%; }
+  to   { background-position: 100% 100%; }
+}
+
+/* Видео: */
+.video {
+  top: 50%;
+  width: 100%;
+  height: 200%;
+  transform: translate(-50%, -50%); /*расположить элемент точно по центру экрана*/
+  left: 50%; /*по центру размещается левая верхняя точка элемента. (из-за absolute) 
+  Поэтому его приходится сдвигать на половину размера.*/
+  z-index: 0;
+  position: absolute;
+}
+@media (max-width: 650px) {
+  .about {
+    padding: 200px 0 0 0;
+  }
+  .about-title{
+    font-size: 45px;
+    opacity: 1;
+  }
+}
+@media (max-width: 450px) {
+  .about {
+    padding: 100px 0 0 0;
+  }
+  .about-title{
+    font-size: 30px;
+  }
+}

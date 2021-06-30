@@ -1,0 +1,184 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --fon_text_btn_next: rgb(0, 0, 255);
+  --fon_background_btn_next: rgb(125, 250, 167);
+  --color_btn_back: rgb(146, 146, 253);
+  --color_border_btn_back: rgb(65, 65, 250);
+  --color_text_btn_back: rgb(10, 0, 68);  
+  --color_text_btn_back_select: rgb(0, 65, 11);
+  --color_btn_back_select: rgb(206, 204, 204);
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --fon_text_btn_next: rgb(109, 255, 128);
+  --fon_background_btn_next: rgb(2, 2, 119);
+  --color_btn_back: rgb(0, 0, 95);
+  --color_border_btn_back: rgb(65, 65, 250);
+  --color_text_btn_back: rgb(250, 250, 250); 
+  --color_text_btn_back_select: rgb(117, 255, 140);
+  --color_btn_back_select: rgb(94, 93, 93);
+}
+*{
+  box-sizing: border-box;
+}
+/*кнопка изменить направление фото*/
+.btn-change_order{
+  position: relative;
+  text-align: center;
+  margin: 10px auto;
+  background: var(--color_btn_back);
+  color: var(--color_text_btn_back);
+  border: 1px solid var(--color_border_btn_back);
+  float: right;
+}
+/*количество фото*/
+.count_photo{
+  text-align: center;
+  margin-left: 5rem;
+  font-size: 25px;
+  background: var(--color_btn_back);
+  color: var(--color_text_btn_back);
+  border: 1px solid var(--color_border_btn_back);
+}
+/*кнопка назад (в виде стрелки влево)*/
+.btn-back {
+  margin-top: 10px;
+  margin-left: 50px;
+  display: inline-block;
+  padding: 20px;
+  position: relative;
+  background: var(--color_btn_back);
+  color: var(--color_text_btn_back);
+  border: 1px solid var(--color_border_btn_back);
+  box-shadow: 0 0 15px var(--color_border_btn_back);    
+}
+.btn-back:after, 
+.btn-back:before {
+  content:'';
+  position: absolute; left: -22px; top: 50%;
+  background: var(--color_btn_back);
+  width: 41px;
+  height: 41px;
+  margin-top: -21px;
+  border-left: 1px solid var(--color_border_btn_back);
+  border-bottom: 1px solid var(--color_border_btn_back);
+  box-shadow: 0 0 15px var(--color_border_btn_back);
+  z-index: -1;
+  transform: rotate(45deg);  
+}
+.btn-back:before {
+  z-index: 1;
+  box-shadow: none;
+}
+/*текст внутри кнопки*/
+.btn-back span {
+  position: relative;
+  z-index: 1;
+}
+/*кнопка назад при наведении на неё*/
+.btn-back:hover{
+  color: var(--color_text_btn_back_select);
+  background:  var(--color_btn_back_select);
+  border: 1px solid var(--color_border_btn_back);    
+  box-shadow: 0 0 25px var(--color_border_btn_back);  /* тень - сдвиг по х, у, радиус размытия, цвет*/
+}
+.btn-back:hover:after, 
+.btn-back:hover:before {
+  background: var(--color_btn_back_select);
+  border-left: 1px solid var(--color_border_btn_back); 
+  border-bottom: 1px solid var(--color_border_btn_back); 
+  box-shadow: 0 0 25px var(--color_border_btn_back); 
+}
+.btn-back:hover:before {
+  z-index: 1;
+  box-shadow: none;
+}
+
+
+/*сообщение об ошибке*/
+.error{
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  background-color: pink;
+  color: black;
+}
+/*таблица с фото*/
+div.cssbox {
+  margin-top: 1vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+}
+/*блок для открывающегося полного фото*/
+span.cssbox_full {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.8);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s linear;
+  z-index: 20; 
+  cursor: initial;
+}
+/*фото открытое полностью*/
+span.cssbox_full img {
+  position: fixed;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  max-height: 90%;
+  max-width: 90%;
+  top: 50%;
+  left: 50%; /*по центру размещается левая верхняя точка элемента.*/
+  transform: translate(-50%, -50%); /*элемент в середину экрана*/
+  margin-right: -50%;/*Поэтому его приходится сдвигать на половину размера.*/
+  box-shadow: 0 0 20px black;
+}
+/*кнопки закрытия, след., предыдущая*/
+a.cssbox_close,
+a.cssbox_prev,
+a.cssbox_next {
+  position: fixed;
+  text-decoration: none;
+  visibility: hidden;
+  color: var(--fon_text_btn_next);
+  background-color: var(--fon_background_btn_next);
+  width: 39px;
+  height: 39px;
+  font-size: 39px;
+  z-index: 23; 
+}
+/*кнопка зарытия*/
+a.cssbox_close {
+  top: 1%;
+  right: 1%
+}
+a.cssbox_close::after {
+  content: '☒';
+}
+/*кнопка предыд., след.*/
+a.cssbox_prev,
+a.cssbox_next {
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+a.cssbox_prev {
+  left: 5%;
+}
+a.cssbox_next {
+  right: 5%;
+}
+/*при переходе после нажатия*/
+a:target ~ a.cssbox_close,
+a:target ~ a.cssbox_prev,
+a:target ~ a.cssbox_next {
+  visibility: visible;
+}
+a:target > img.cssbox_thumb + span.cssbox_full {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: initial;
+}

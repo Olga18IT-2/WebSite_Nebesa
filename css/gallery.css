@@ -1,0 +1,54 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --fon_text: #ffffff;
+  --text: rgb(4, 12, 116);
+  --border_folder: lightgray;
+  --border_select_folder: rgb(133, 252, 109);
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --fon_text: #1c0080;
+  --text: rgb(255, 255, 255);
+  --border_folder: rgb(175, 174, 174);
+  --border_select_folder: rgb(255, 248, 144);
+}
+*{
+  box-sizing: border-box;
+}
+.container_gallery{ /*контейнеры (табличка)*/
+  margin:0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-rows: repeat(2, auto-fit);
+}
+/*папка*/
+.container_folder{
+  margin-top: 2vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  border: 1px dotted var(--border_folder);
+  vertical-align: center;
+  min-height: 230px;
+  background-repeat: no-repeat;
+  background-size: 90% 100%;
+  text-align: center;
+}
+.container_folder:hover{
+  border: 2px dashed var(--border_select_folder);
+  border-radius: 10%;
+}
+/*имя папки*/
+.container_folder .container_name_folder{
+  color:rgb(3, 3, 29);
+  margin: 0 auto;
+  margin-top: 20%;
+  width: 50%;
+}
+/*дата*/
+.container_folder .container_date_folder{
+  color:var(--text);
+  background-color: var(--fon_text);
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 50%;
+}

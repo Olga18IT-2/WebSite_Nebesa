@@ -1,0 +1,112 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --menu_color_new: #d1ecff;
+  --menu_text_new: black;
+  --lightgreen_repeat: rgb(108, 255, 95);
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --menu_color_new: #232132;
+  --menu_text_new: rgb(194, 191, 248);
+  --lightgreen_repeat: rgb(70, 202, 63);
+}
+
+@media (max-width: 1120px) {
+  .header {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1010px) {
+  .header {
+    font-size: 12px;
+  }
+  
+}
+
+@media (max-width: 925px){
+  .header_contacts img{
+    display: none;
+  }
+  .slider{
+    min-height: 350px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 905px) {
+  .main_container {
+    margin: 150px auto;
+  }
+  .slider__title {
+    font-size: 25px;
+  }
+  .slider__text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .header_contacts {
+    text-align: center;
+    font-size: 13px;
+  }
+  .toggle-theme {
+    float: none;
+    width: 100%;
+  }
+  .header__btn-menu {
+    display: block;
+  }
+  .menu ul {
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 50;
+    width: 50%;
+  }
+  .menu li {
+    display: block;
+    text-align: center;
+  }
+  .header__btn {
+    background-color: var(--lightgreen_repeat);
+    color: var(--menu_text_new);
+  }
+  .menu li+li {
+    padding-left: 0;
+  }
+  .menu a {
+    display: block;
+    background-color: var(--menu_color_new);
+    border-top: 1px solid lavender;
+    border-bottom: 1px solid lavender;
+  }
+}
+
+@media (max-width: 485px) {
+  .header__phone, .header__email {
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .slider{
+    min-height: 250px;
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 330px) {
+  .header__phone, .header__email {
+    font-size: 11px;
+    letter-spacing: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  
+}
+
+@media (min-width: 905px) {
+  .menu ul {
+    display: block !important;
+  }
+}

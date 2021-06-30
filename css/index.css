@@ -1,0 +1,62 @@
+/*параметры для темы по умолчанию (светлая)*/
+:root {
+  --menu_back_backcolor: #b8cfff;
+  --back_image_center_part: url(/img/fon_main_page.png);
+}
+/*параметры для темной темы*/
+:root[data-theme='dark'] {
+  --menu_back_backcolor: #cad5fa;
+  --back_image_center_part: url(/img/fon_main_page_dark.png);
+}
+*{
+  box-sizing: border-box;
+}
+/*главный контейнер*/
+.main_container {
+  margin: 125px auto 0px auto;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+/*наименование (заголовок)*/
+.name_content_block {
+  width: 99%;
+  text-align: center;
+  font-size: 18px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+  grid-template-rows: repeat(2, auto-fit);
+}
+/*дополнительный заголовок*/
+.dop_name_content{
+  font-size: 15px; 
+}
+/*блок с изображением*/
+.block_1{
+  margin-top: 3vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  border: 0px;
+  text-align: center;
+  color: black;
+}
+.block_1 img {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 700px){
+  .name_content_block {
+    font-size: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  }
+}
+
+@media (max-width: 485px) {
+  .name_content_block {
+    font-size: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(60%, 1fr));
+  }
+}
